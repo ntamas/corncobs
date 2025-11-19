@@ -9,13 +9,13 @@ on:
 env:
   CIBW_BEFORE_ALL_LINUX: >
     yum -y install libatomic &&
-    ( curl -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.83 --profile=minimal -y ) &&
+    ( curl -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.85 --profile=minimal -y ) &&
     rustup show
   CIBW_BEFORE_ALL_WINDOWS: >
-    rustup toolchain install --no-self-update 1.83 &&
+    rustup toolchain install --no-self-update 1.85 &&
     rustup target add i686-pc-windows-msvc
   CIBW_BEFORE_ALL_MACOS: >
-    rustup toolchain install --no-self-update 1.83 &&
+    rustup toolchain install --no-self-update 1.85 &&
     rustup target add x86_64-apple-darwin
   CIBW_ENVIRONMENT_LINUX: "PATH=$HOME/.cargo/bin:$PATH"
 
