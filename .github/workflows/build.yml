@@ -142,6 +142,11 @@ jobs:
   publish:
     name: Publish wheels
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/corncobs
+    permissions:
+      id-token: write
     needs:
       [
         build_wheel_linux,
@@ -158,7 +163,3 @@ jobs:
           merge-multiple: true
 
       - uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: ${{ secrets.PYPI_USERNAME }}
-          password: ${{ secrets.PYPI_PASSWORD }}
-          verbose: true
