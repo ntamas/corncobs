@@ -2,9 +2,6 @@ name: Build
 
 on:
   push:
-    tags:
-      - "*"
-  workflow_dispatch:
 
 env:
   CIBW_BEFORE_ALL_LINUX: >
