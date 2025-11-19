@@ -1,0 +1,18 @@
+[package]
+name = "corncobs"
+version = "0.1.0"
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "corncobs"
+crate-type = ["cdylib"]
+
+[dependencies]
+corncobs = "0.1.4"
+pyo3 = { version = "0.27.1", features = ["abi3-py310"] }
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"

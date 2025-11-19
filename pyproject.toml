@@ -1,0 +1,53 @@
+[build-system]
+requires = ["maturin>=1.10,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "corncobs"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+
+[dependency-groups]
+dev = ["cobs", "richbench", { include-group = "test" }]
+test = ["pytest>=9"]
+
+[tool.maturin]
+python-source = "python"
+module-name = "corncobs._cobs"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+min_version = 4.0
+env_list = py313, py312, py311, py310, type
+
+[gh-actions]
+python =
+    3.10: py310
+    3.11: py311
+    3.12: py312
+    3.13: py313, type
+
+[testenv]
+dependency_groups = test
+commands = pytest tests -s
+
+[testenv:type]
+deps =
+    mypy
+    types-Deprecated
+setenv =
+    MYPYPATH = stubs
+commands = mypy python
+"""
+
+[tool.cibuildwheel]
+skip = ["*musllinux*"]
+test-command = "pytest {project}/tests"
+test-groups = ["test"]
+manylinux-x86_64-image = "manylinux2014"
