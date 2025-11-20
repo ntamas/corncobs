@@ -16,7 +16,7 @@ checksum = "b0e03e9489176ebd301922fdcd0234f6dee954cbf65311863353f20d2746a8db"
 
 [[package]]
 name = "corncobs"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "corncobs 0.1.4",
  "pyo3",
