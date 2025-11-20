@@ -10,17 +10,17 @@ checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
 name = "corncobs"
-version = "0.1.0"
+version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0e03e9489176ebd301922fdcd0234f6dee954cbf65311863353f20d2746a8db"
+
+[[package]]
+name = "corncobs"
+version = "1.0.0"
 dependencies = [
  "corncobs 0.1.4",
  "pyo3",
 ]
-
-[[package]]
-name = "corncobs"
-version = "0.1.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b0e03e9489176ebd301922fdcd0234f6dee954cbf65311863353f20d2746a8db"
 
 [[package]]
 name = "heck"
