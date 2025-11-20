@@ -109,9 +109,9 @@ class TestZeros:
             test_string = b"\x00" * length
             encoded = cobs.encode(test_string)
             expected_encoded = b"\x01" * (length + 1)
-            assert encoded == expected_encoded, (
-                f"encoding zeros failed for length {length}"
-            )
+            assert (
+                encoded == expected_encoded
+            ), f"encoding zeros failed for length {length}"
 
             decoded = cobs.decode(encoded)
             assert decoded == test_string, f"decoding zeros failed for length {length}"
