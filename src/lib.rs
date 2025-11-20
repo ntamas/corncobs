@@ -308,10 +308,12 @@ mod corncobs_py {
                             // If we commit ourselves to this offset, it means
                             // that we will copy this many extra bytes to the
                             // message. Check whether that would exceed max_length.
-                            if let Some(max_length) = self.max_length
-                                && self.message.len() + (offset as usize) > max_length
-                            {
-                                self.handle_error(DecoderErrorCode::ExceededMaxLength, byte)?;
+                            if let Some(max_length) = self.max_length {
+                                if self.message.len() + (offset as usize) > max_length {
+                                    self.handle_error(DecoderErrorCode::ExceededMaxLength, byte)?;
+                                } else {
+                                    self.state = DState::Data(offset, offset < 254);
+                                }
                             } else {
                                 self.state = DState::Data(offset, offset < 254);
                             }
