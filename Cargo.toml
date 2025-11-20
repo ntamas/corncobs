@@ -1,7 +1,11 @@
 [package]
 name = "corncobs"
+description = "Python interface to the corncobs Rust library to implement COBS (Consistent Overhead Byte Stuffing) encoding"
+repository = "https://github.com/ntamas/corncobs"
 version = "0.1.0"
 edition = "2024"
+exclude = ["/.github", "/stubs/cobs"]
+license = "MPL-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
