@@ -1,6 +1,13 @@
-from ._cobs import decode, encode, DecodeError
+from ._cobs import DecodeError, Decoder, decode, encode
 
-__all__ = ("decode", "encode", "encoding_overhead", "max_encoded_length", "DecodeError")
+__all__ = (
+    "DecodeError",
+    "Decoder",
+    "decode",
+    "encode",
+    "encoding_overhead",
+    "max_encoded_length",
+)
 
 
 def encoding_overhead(source_len: int) -> int:
