@@ -4,13 +4,15 @@ build-backend = "maturin"
 
 [project]
 name = "corncobs"
+description = "Consistent Overhead Byte Stuffing (COBS) backed by the corncobs Rust crate"
 requires-python = ">=3.10"
 classifiers = [
-    "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
+  "Programming Language :: Rust",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dynamic = ["version"]
+readme = "README.md"
 
 [dependency-groups]
 dev = ["cobs", "richbench", { include-group = "test" }]
