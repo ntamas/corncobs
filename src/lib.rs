@@ -309,7 +309,7 @@ mod corncobs_py {
                             // that we will copy this many extra bytes to the
                             // message. Check whether that would exceed max_length.
                             if let Some(max_length) = self.max_length {
-                                if self.message.len() + (offset as usize) > max_length {
+                                if self.message.len() + usize::from(offset) > max_length {
                                     self.handle_error(DecoderErrorCode::ExceededMaxLength, byte)?;
                                 } else {
                                     self.state = DState::Data(offset, offset < 254);
@@ -329,7 +329,7 @@ mod corncobs_py {
                             // In strict mode, we need to check whether any of
                             // the copied bytes is zero.
                             if remaining > 0 {
-                                let end = min(index + (remaining as usize), bytes.len());
+                                let end = min(index + usize::from(remaining), bytes.len());
                                 let to_copy = &bytes[(index - 1)..end];
                                 if self.strict && to_copy.contains(&0) {
                                     self.handle_error(DecoderErrorCode::ZeroByteInInput, byte)?;
@@ -339,7 +339,10 @@ mod corncobs_py {
                                 self.message.extend_from_slice(to_copy);
                                 index = end;
 
-                                let consumed = to_copy.len() as u8;
+                                let consumed =
+                                    u8::try_from(to_copy.len()).map_err(|_| -> PyErr {
+                                        DecoderErrorCode::UnexpectedError.into()
+                                    })?;
                                 if consumed <= offset {
                                     self.state = DState::Data(offset - consumed, append_zero);
                                 } else {
