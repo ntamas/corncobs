@@ -24,7 +24,16 @@ def decode_using_corncobs():
     corncobs.decode(encoded_test_data)
 
 
+def decode_using_corncobs_non_strict():
+    corncobs.decode(encoded_test_data, strict=False)
+
+
 __benchmarks__ = [
     (encode_using_cobs, encode_using_corncobs, "Encode 10,000,000 bytes"),
     (decode_using_cobs, decode_using_corncobs, "Decode 10,000,000 bytes"),
+    (
+        decode_using_cobs,
+        decode_using_corncobs_non_strict,
+        "Decode 10,000,000 bytes, non-strict mode",
+    ),
 ]

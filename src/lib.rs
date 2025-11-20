@@ -44,11 +44,16 @@ mod corncobs_py {
     }
 
     #[pyfunction]
-    fn decode<'p>(py: Python<'p>, mut in_bytes: Vec<u8>) -> PyResult<Bound<'p, PyBytes>> {
+    #[pyo3(signature = (in_bytes, *, strict = true))]
+    fn decode<'p>(
+        py: Python<'p>,
+        mut in_bytes: Vec<u8>,
+        strict: bool,
+    ) -> PyResult<Bound<'p, PyBytes>> {
         // We need to check whether in_bytes contains a zero because corncobs
         // won't do that for performance reasons - but we want to stay compatible
         // with cobs which does check for that.
-        if in_bytes.contains(&0) {
+        if strict && in_bytes.contains(&0) {
             return Err(DecodeError::new_err("input contains zero byte"));
         }
 
