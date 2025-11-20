@@ -98,7 +98,3 @@ assert decoder(
 ## License
 
 `corncobs` is licensed under the **Mozilla Public License, version 2.0**, matching the upstream Rust project.
-
-```
-
-```
