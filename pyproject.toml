@@ -14,6 +14,9 @@ classifiers = [
 dynamic = ["version"]
 readme = "README.md"
 
+[project.urls]
+repository = "https://github.com/ntamas/corncobs"
+
 [dependency-groups]
 dev = ["cobs", "richbench", { include-group = "test" }]
 test = ["pytest>=9"]
