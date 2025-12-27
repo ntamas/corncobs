@@ -12,6 +12,8 @@ classifiers = [
 ]
 dynamic = ["version"]
 readme = "README.md"
+license = "MPL-2.0"
+license-files = ["LICENSE.txt"]
 
 [project.urls]
 repository = "https://github.com/ntamas/corncobs"
